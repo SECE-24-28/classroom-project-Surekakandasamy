@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recharge Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-red-50 via-red-100 to-red-200 min-h-screen">
+<header class="bg-gradient-to-r from-red-700 via-red-600 to-red-500 text-white p-4 text-center text-xl font-semibold shadow">
+    Mobile Recharge
+</header>
+
+
+<main class="p-6 flex justify-center">
+
+    <form class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-lg"
+          onsubmit="saveRecharge(event)">
+
+        <h2 class="text-2xl font-bold text-center text-pink-600 mb-4">
+            Enter Recharge Details
+        </h2>
+
+        <!-- Mobile Number -->
+        <label class="block mb-2 font-semibold">Mobile Number</label>
+        <input type="text" id="number"
+               class="w-full p-2 border rounded mb-4" required
+               placeholder="Enter 10-digit number">
+
+        <!-- Operator -->
+        <label class="block mb-2 font-semibold">Operator</label>
+        <select id="operator" class="w-full p-2 border rounded mb-4">
+            <option>Jio</option>
+            <option>Airtel</option>
+            <option>VI</option>
+            <option>BSNL</option>
+        </select>
+
+        <!-- Amount -->
+        <label class="block mb-2 font-semibold">Recharge Amount (₹)</label>
+        <input type="number" id="amount"
+               class="w-full p-2 border rounded mb-4" required
+               placeholder="Enter amount">
+
+        <!-- Submit Button -->
+        <button
+                class="w-full bg-gradient-to-r from-pink-400 to-rose-500 
+                       text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+            Recharge Now
+        </button>
+
+        <a href="dashboard.html"
+           class="block mt-4 text-center text-pink-600 font-semibold">
+            Back to Dashboard
+        </a>
+
+    </form>
+
+</main>
+
+<script>
+    function saveRecharge(event) {
+        event.preventDefault();
+
+        const number = document.getElementById("number").value;
+        const operator = document.getElementById("operator").value;
+        const amount = document.getElementById("amount").value;
+
+        // Prepare record
+        const rechargeRecord = {
+            number,
+            operator,
+            amount,
+            date: new Date().toLocaleString()
+        };
+
+        // Read old history
+        let history = JSON.parse(localStorage.getItem("rechargeHistory")) || [];
+
+        // Add new recharge
+        history.push(rechargeRecord);
+
+        // Save back to localStorage
+        localStorage.setItem("rechargeHistory", JSON.stringify(history));
+
+        alert("Recharge Successful!");
+
+        // Redirect to dashboard
+        window.location.href = "dashboard.html";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+/* Soft multi-tone background gradient */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe6f0, #ffd9e8, #ffeef6);
+  background-size: 400% 400%;
+  animation: bgAnimation 12s ease infinite;
+}
+
+/* Background slow animation */
+@keyframes bgAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Card shadow */
+.custom-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(255, 145, 180, 0.25);
+  transition: 0.3s;
+}
+
+.custom-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Button smooth hover */
+.btn-hover:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+  transition: 0.2s ease-in-out;
+}
+
+/* Premium Heading */
+.title-gradient {
+  background: linear-gradient(to right, #e11d48, #db2777, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Input focus effect */
+input:focus, select:focus {
+  border-color: #ec4899 !important;
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.5);
+  outline: none;
+}

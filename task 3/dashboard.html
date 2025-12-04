@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-red-50 via-red-100 to-red-200">
+
+<header class="bg-gradient-to-r from-red-700 via-red-600 to-red-500 text-white p-4 text-center 
+        text-xl font-semibold shadow-md">
+    Mobile Recharge Portal
+</header>
+
+<main class="p-6 flex justify-center">
+    <div class="p-6 w-full max-w-lg bg-white rounded-2xl shadow-lg border border-red-300">
+
+        <h2 class="text-3xl font-bold text-center bg-gradient-to-r from-red-700 to-red-500 
+                text-transparent bg-clip-text mb-4">
+            Dashboard Overview
+        </h2>
+
+        <div class="grid gap-4">
+
+            <a href="recharge.html"
+               class="block bg-gradient-to-r from-red-500 to-red-600 text-white p-3 rounded-xl 
+               text-center font-semibold shadow">
+                Recharge Now
+            </a>
+
+            <a href="history.html"
+               class="block bg-gradient-to-r from-red-400 to-red-500 text-white p-3 rounded-xl 
+               text-center font-semibold shadow">
+                View Recharge History
+            </a>
+
+            <a href="edit-profile.html"
+               class="block bg-gradient-to-r from-red-300 to-red-400 text-white p-3 rounded-xl 
+               text-center font-semibold shadow">
+                Edit Profile
+            </a>
+
+            <a href="#" onclick="logoutUser()"
+               class="block bg-gradient-to-r from-red-700 to-red-800 text-white p-3 rounded-xl 
+               text-center font-semibold shadow">
+                Logout
+            </a>
+
+        </div>
+    </div>
+</main>
+
+<script>
+function logoutUser() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

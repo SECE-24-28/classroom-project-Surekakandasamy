@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recharge History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-red-50 via-red-100 to-red-200">
+<header class="bg-gradient-to-r from-red-700 via-red-600 to-red-500 text-white p-4 text-center text-xl font-semibold shadow">
+    Recharge History
+</header>
+
+
+<main class="p-6 flex justify-center">
+    <div class="bg-white p-4 rounded-xl shadow border border-red-300">
+
+
+        <h2 class="text-2xl font-bold text-center mb-4 text-pink-600">
+            Your Past Recharges
+        </h2>
+
+        <p class="text-center text-gray-700 mb-4">
+            Below are your previously completed transactions.
+        </p>
+
+        <ul id="historyList" class="space-y-4"></ul>
+
+        <a href="dashboard.html"
+           class="block mt-6 bg-gradient-to-r from-rose-400 to-pink-500 text-white p-3 rounded-xl 
+                  text-center font-semibold shadow hover:opacity-90 transition">
+            Back to Dashboard
+        </a>
+
+    </div>
+</main>
+
+<script>
+    // Show recharge history from localStorage
+    const historyList = document.getElementById("historyList");
+    const history = JSON.parse(localStorage.getItem("rechargeHistory")) || [];
+
+    if (history.length === 0) {
+        historyList.innerHTML = `<p class="text-center text-gray-600">No recharge history available.</p>`;
+    } else {
+        historyList.innerHTML = history.map(item => `
+            <li class="p-4 border border-pink-200 rounded-lg">
+                <p><strong>Number:</strong> ${item.number}</p>
+                <p><strong>Operator:</strong> ${item.operator}</p>
+                <p><strong>Amount:</strong> ₹${item.amount}</p>
+                <p class="text-gray-600 text-sm">Date: ${item.date}</p>
+            </li>
+        `).join('');
+    }
+</script>
+
+</body>
+</html>
