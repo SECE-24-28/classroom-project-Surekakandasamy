@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-right-menu">
+    <a href="dashboard.html">Home</a>
+    <a href="history.html">History</a>
+    <a href="index.html">Logout</a>
+</div>
+
+<div class="container">
+    <div class="custom-card">
+        <h2>Your Profile</h2>
+
+        <label>Name</label>
+        <input type="text" id="name">
+
+        <label>Email</label>
+        <input type="email" id="email">
+
+        <label>Mobile Number</label>
+        <input type="text" id="mobile">
+
+        <button onclick="saveProfile()" class="btn-hover">Save Profile</button>
+    </div>
+</div>
+
+<script>
+// Load saved data
+window.onload = function () {
+    let user = JSON.parse(localStorage.getItem("user")) || {};
+    document.getElementById("name").value = user.name || "";
+    document.getElementById("email").value = user.email || "";
+    document.getElementById("mobile").value = user.mobile || "";
+};
+
+function saveProfile() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+
+    if (name === "" || email === "" || mobile.length !== 10) {
+        alert("Enter valid details!");
+        return;
+    }
+
+    let user = { name, email, mobile };
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Profile saved successfully!");
+    window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>

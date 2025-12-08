@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="top-right-menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="history.html">History</a>
+</div>
+
+<div class="container">
+    <div class="custom-card">
+
+        <h2>Payment</h2>
+
+        <p><strong>Amount:</strong> ₹<span id="amt"></span></p>
+
+        <button onclick="payNow()">Pay Now</button>
+
+    </div>
+</div>
+
+<script>
+document.getElementById("amt").innerText =
+    localStorage.getItem("selectedPlan");
+
+function payNow() {
+
+    let history = JSON.parse(localStorage.getItem("rechargeHistory")) || [];
+
+    let entry = {
+        amount: localStorage.getItem("selectedPlan"),
+        operator: localStorage.getItem("selectedOperator"),
+        date: new Date().toLocaleString()
+    };
+
+    history.push(entry);
+
+    localStorage.setItem("rechargeHistory", JSON.stringify(history));
+
+    alert("Recharge Successful!");
+    location.href = "history.html";
+}
+</script>
+
+</body>
+</html>

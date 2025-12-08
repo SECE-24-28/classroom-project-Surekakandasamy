@@ -1,0 +1,15 @@
+{
+    "Airtel": [
+        { "amount": 179, "desc": "Unlimited Calls + 2GB", "validity": "28 Days" },
+        { "amount": 299, "desc": "1.5GB/day + SMS", "validity": "28 Days" },
+        { "amount": 479, "desc": "1.5GB/day + OTT", "validity": "56 Days" }
+    ],
+    "Jio": [
+        { "amount": 199, "desc": "2GB/day + Calls", "validity": "23 Days" },
+        { "amount": 399, "desc": "1.5GB/day", "validity": "56 Days" }
+    ],
+    "Vi": [
+        { "amount": 149, "desc": "Unlimited Calls", "validity": "21 Days" },
+        { "amount": 299, "desc": "2GB/day", "validity": "28 Days" }
+    ]
+}

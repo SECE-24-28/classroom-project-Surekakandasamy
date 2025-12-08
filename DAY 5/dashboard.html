@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-right-menu">
+    <a href="profile.html">Profile</a>
+    <a href="history.html">History</a>
+    <a href="help.html">Help</a>
+    <a href="about.html">About</a>
+    <a href="index.html">Logout</a>
+</div>
+
+<div class="container">
+    <div class="custom-card">
+
+        <h2 id="welcome">Welcome User</h2>
+
+        <div class="card-grid">
+            <a href="recharge.html" class="dash-card">Recharge</a>
+            <a href="plans.html" class="dash-card">View Plans</a>
+            <a href="history.html" class="dash-card">Recharge History</a>
+            <a href="offers.html" class="dash-card">Special Offers</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+// Load user
+let user = JSON.parse(localStorage.getItem("user"));
+document.getElementById("welcome").innerHTML =
+    "Welcome, " + (user?.name || "User");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Operator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="center">
+    <div class="card">
+        <h2>Select Your Operator</h2>
+
+        <select id="operator" class="btn" style="background:white;color:black;">
+            <option value="airtel">Airtel</option>
+            <option value="jio">Jio</option>
+            <option value="vi">VI</option>
+            <option value="bsnl">BSNL</option>
+        </select>
+
+        <br><br>
+
+        <button class="btn" onclick="continueNext()">Continue</button>
+    </div>
+</div>
+
+<script>
+function continueNext() {
+    let op = document.getElementById("operator").value;
+    localStorage.setItem("operator", op);
+    window.location.href = "plans.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recharge History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="history-bg">
+
+<div class="top-right-menu">
+    <a href="dashboard.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="index.html">Logout</a>
+</div>
+
+<div class="container">
+    <div class="custom-card">
+        <h2>Your Recharge History</h2>
+
+        <table id="historyTable" class="history-table">
+            <tr>
+                <th>Mobile</th>
+                <th>Operator</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+window.onload = function () {
+    let list = JSON.parse(localStorage.getItem("history")) || [];
+
+    let table = document.getElementById("historyTable");
+
+    list.forEach(h => {
+        let row = `<tr>
+                      <td>${h.mobile}</td>
+                      <td>${h.operator}</td>
+                      <td>₹${h.amount}</td>
+                      <td>${h.date}</td>
+                   </tr>`;
+        table.innerHTML += row;
+    });
+};
+</script>
+
+</body>
+</html>

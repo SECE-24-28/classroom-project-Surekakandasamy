@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recharge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-right-menu">
+    <a href="dashboard.html">Home</a>
+    <a href="history.html">History</a>
+    <a href="profile.html">Profile</a>
+    <a href="help.html">Help</a>
+    <a href="about.html">About</a>
+    <a href="index.html">Logout</a>
+</div>
+
+<div class="container">
+    <div class="custom-card">
+        <h2>Select Operator & Recharge Plan</h2>
+
+        <label>Mobile Number</label>
+        <input type="text" id="mobile" placeholder="Enter mobile number">
+
+        <label>Choose Operator</label>
+        <select id="operator">
+            <option value="">Select Operator</option>
+            <option value="airtel">Airtel</option>
+            <option value="jio">Jio</option>
+            <option value="vi">VI</option>
+        </select>
+
+        <button onclick="loadPlans()" class="btn-hover">Show Plans</button>
+
+        <div id="plans-box"></div>
+    </div>
+</div>
+
+<script>
+function loadPlans() {
+    let mobile = document.getElementById("mobile").value.trim();
+    let operator = document.getElementById("operator").value;
+
+    if (mobile.length !== 10 || isNaN(mobile)) {
+        alert("Enter valid 10-digit mobile number!");
+        return;
+    }
+    if (operator === "") {
+        alert("Select an operator!");
+        return;
+    }
+
+    let plans = {
+        airtel: [
+            {price: 179, desc: "1GB/day – 24 Days"},
+            {price: 299, desc: "1.5GB/day – 28 Days"},
+            {price: 479, desc: "1.5GB/day – 56 Days"}
+        ],
+        jio: [
+            {price: 239, desc: "1.5GB/day – 28 Days"},
+            {price: 299, desc: "2GB/day – 23 Days"},
+            {price: 666, desc: "1.5GB/day – 84 Days"}
+        ],
+        vi: [
+            {price: 199, desc: "1GB/day – 24 Days"},
+            {price: 299, desc: "1.5GB/day – 28 Days"},
+            {price: 475, desc: "2GB/day – 28 Days"}
+        ]
+    };
+
+    let available = plans[operator];
+
+    let output = "<h3>Available Plans</h3>";
+    available.forEach(p => {
+        output += `
+            <div class="plan-card">
+                <h4>₹${p.price}</h4>
+                <p>${p.desc}</p>
+                <button onclick="pay(${p.price})">Recharge</button>
+            </div>
+        `;
+    });
+
+    document.getElementById("plans-box").innerHTML = output;
+}
+
+function pay(amount) {
+    localStorage.setItem("amount", amount);
+    window.location.href = "payment.html";
+}
+</script>
+
+</body>
+</html>
