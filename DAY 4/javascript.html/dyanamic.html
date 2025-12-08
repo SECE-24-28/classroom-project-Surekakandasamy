@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Slip Generator</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f3f3f3;
+            padding: 30px;
+        }
+
+        .container {
+            width: 380px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .slip-box {
+            margin-top: 20px;
+            background: #eef2ff;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Salary Slip Generator</h2>
+
+        <label>Employee Name:</label>
+        <input type="text" id="name">
+
+        <label>Department:</label>
+        <input type="text" id="dept">
+
+        <label>Basic Salary:</label>
+        <input type="number" id="basic">
+
+        <button onclick="generateSlip()">Generate Salary Slip</button>
+
+        <div class="slip-box" id="slip">
+            <h3 id="greetMsg"></h3>
+            <p><b>Employee Name:</b> <span id="outName"></span></p>
+            <p><b>Department:</b> <span id="outDept"></span></p>
+            <p><b>Basic Salary:</b> ₹<span id="outBasic"></span></p>
+            <p><b>HRA (10%):</b> ₹<span id="outHra"></span></p>
+            <p><b>PF (5%):</b> ₹<span id="outPf"></span></p>
+            <p><b>Net Salary:</b> ₹<span id="outNet"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function generateSlip() {
+            let name = document.getElementById("name").value;
+            let dept = document.getElementById("dept").value;
+            let basic = Number(document.getElementById("basic").value);
+
+            let hra = basic * 0.10;
+            let pf = basic * 0.05;
+            let net = basic + hra - pf;
+
+            document.getElementById("greetMsg").innerText = "Hello " + name + ", here is your salary slip!";
+            document.getElementById("outName").innerText = name;
+            document.getElementById("outDept").innerText = dept;
+            document.getElementById("outBasic").innerText = basic;
+            document.getElementById("outHra").innerText = hra.toFixed(2);
+            document.getElementById("outPf").innerText = pf.toFixed(2);
+            document.getElementById("outNet").innerText = net.toFixed(2);
+
+            document.getElementById("slip").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

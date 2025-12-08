@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Salary Slip Generator</title>
+</head>
+<body>
+
+    <h2>SALARY SLIP GENERATOR</h2>
+
+    <form onsubmit="generateslip(event)">
+        <label>Employee Name</label>
+        <input type="text" id="name"><br><br>
+
+        <label>Department</label>
+        <input type="text" id="dept"><br><br>
+
+        <label>Basic Salary</label>
+        <input type="text" id="salary"><br><br>
+
+        <button type="submit">Generate Slip</button>
+    </form>
+
+    <h3 id="greet"></h3>
+    <p id="output"></p>
+
+    <script>
+        function generateslip(event) {
+            event.preventDefault();  // stop form refresh
+
+            let name = document.getElementById("name").value;
+            let dept = document.getElementById("dept").value;
+            let salary = Number(document.getElementById("salary").value);
+
+            let hra = salary * 0.10;   // 10%
+            let pf = salary * 0.05;    // 5%
+            let net = salary + hra - pf;
+
+            document.getElementById("greet").innerText = "Hello " + name + ", here is your salary slip:";
+
+            document.getElementById("output").innerHTML =
+                "Employee Name: " + name + "<br>" +
+                "Department: " + dept + "<br>" +
+                "Basic Salary: ₹" + salary + "<br>" +
+                "HRA (10%): ₹" + hra.toFixed(2) + "<br>" +
+                "PF (5%): ₹" + pf.toFixed(2) + "<br>" +
+                "Net Salary: ₹" + net.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
